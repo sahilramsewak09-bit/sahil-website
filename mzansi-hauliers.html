@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mzansi Hauliers | South African Heavy Transport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   fontFamily: {
+                       sans: ['Roboto', 'sans-serif'],
+                       display: ['Bebas Neue', 'sans-serif'],
+                   },
+                   colors: {
+                       'sa-green': '#007749',
+                       'sa-gold': '#FFB81C',
+                       'sa-red': '#DE3831',
+                       'sa-black': '#1a1a1a',
+                       'sa-blue': '#002395',
+                       'earth': '#8B4513',
+                   },
+                   animation: {
+                       'spin-slow': 'spin 8s linear infinite',
+                       'marquee': 'marquee 25s linear infinite',
+                       'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                   },
+                   keyframes: {
+                       marquee: {
+                           '0%': { transform: 'translateX(0%)' },
+                           '100%': { transform: 'translateX(-100%)' },
+                       }
+                   }
+               }
+           }
+       }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #007749;
+            border-radius: 5px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #FFB81C;
+            }
+
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .glass-nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 3px solid #007749;
+        }
+
+        .truck-card:hover .truck-img {
+            transform: scale(1.1);
+        }
+
+        .sa-pattern {
+            background-image: repeating-linear-gradient( 45deg, transparent, transparent 10px, rgba(0, 119, 73, 0.1) 10px, rgba(0, 119, 73, 0.1) 20px );
+        }
+
+        .flag-bar {
+            background: linear-gradient(to right, #DE3831 33%, #007749 33%, #007749 66%, #002395 66%);
+        }
+    </style>
+</head>
+<body class="bg-sa-black text-gray-100 font-sans antialiased overflow-x-hidden">
+
+    <!-- Top Bar -->
+    <div class="flag-bar h-1 w-full"></div>
+    <div class="bg-sa-green text-white py-2 text-center text-sm font-medium tracking-wider">
+        <i class="fas fa-phone-alt mr-2"></i> EMERGENCY BREAKDOWN: 0800 HAULIER | <i class="fas fa-map-marker-alt ml-4 mr-2"></i> SERVICING ALL 9 PROVINCES
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 glass-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-sa-gold rounded-full flex items-center justify-center text-sa-black border-4 border-sa-green">
+                    <i class="fas fa-truck-moving text-2xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display text-3xl tracking-wider text-white group-hover:text-sa-gold transition-colors">MZANSI HAULIERS</span>
+                    <span class="text-xs text-sa-gold tracking-[0.3em] uppercase font-bold">Proudly South African Transport</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="text-sm font-medium hover:text-sa-gold transition-colors uppercase tracking-wide">Services</a>
+                <a href="#fleet" class="text-sm font-medium hover:text-sa-gold transition-colors uppercase tracking-wide">Fleet</a>
+                <a href="#routes" class="text-sm font-medium hover:text-sa-gold transition-colors uppercase tracking-wide">Routes</a>
+                <a href="#quote" class="text-sm font-medium hover:text-sa-gold transition-colors uppercase tracking-wide">Get Quote</a>
+                <a href="#contact" class="px-6 py-2 bg-sa-green text-white font-bold rounded hover:bg-sa-gold hover:text-sa-black transition-colors uppercase tracking-wide border-2 border-sa-gold">
+                    <i class="fas fa-phone mr-2"></i>Call Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sa-black absolute w-full border-t-2 border-sa-green">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="#services" class="text-white hover:text-sa-gold">Services</a>
+                <a href="#fleet" class="text-white hover:text-sa-gold">Fleet</a>
+                <a href="#routes" class="text-white hover:text-sa-gold">Routes</a>
+                <a href="#quote" class="text-white hover:text-sa-gold">Get Quote</a>
+                <a href="#contact" class="text-sa-gold font-bold">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden clip-diagonal">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1566008885218-90abf9200ddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Truck on South African road" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-r from-sa-black via-sa-black/80 to-transparent"></div>
+            <div class="absolute inset-0 sa-pattern opacity-30"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 pt-20">
+            <div class="max-w-3xl">
+                <div class="flex items-center gap-2 mb-4 text-sa-gold animate-pulse">
+                    <i class="fas fa-star text-sa-gold"></i>
+                    <i class="fas fa-star text-sa-gold"></i>
+                    <i class="fas fa-star text-sa-gold"></i>
+                    <i class="fas fa-star text-sa-gold"></i>
+                    <i class="fas fa-star text-sa-gold"></i>
+                    <span class="uppercase tracking-[0.3em] text-sm font-bold ml-2">Trusted Since 1994</span>
+                </div>
+                <h1 class="font-display text-5xl md:text-8xl font-bold leading-none mb-6 text-white">
+                    CROSSING THE <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sa-gold to-yellow-400">KAROO & BEYOND</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-xl leading-relaxed">
+                    From Johannesburg to Cape Town, Durban to Port Elizabeth. We move South Africa's freight with pride, reliability, and that unmistakable Mzansi spirit.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#quote" class="px-8 py-4 bg-sa-green text-white font-bold rounded hover:bg-sa-gold hover:text-sa-black transition-all transform hover:-translate-y-1 shadow-lg border-2 border-sa-gold text-center">
+                        <i class="fas fa-calculator mr-2"></i>GET A QUOTE
+                    </a>
+                    <a href="#fleet" class="px-8 py-4 border-2 border-sa-green text-white font-bold rounded hover:bg-sa-green hover:border-sa-green transition-all text-center">
+                        <i class="fas fa-truck mr-2"></i>VIEW FLEET
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-sa-gold">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- Stats Strip -->
+    <section class="bg-sa-green py-8 relative z-20 -mt-20 mx-4 md:mx-20 rounded-lg shadow-2xl transform translate-y-12 border-4 border-sa-gold">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
+                <div>
+                    <div class="text-4xl font-display font-bold text-white counter" data-target="29">0</div>
+                    <div class="text-sm font-bold text-sa-gold uppercase tracking-wider">Years in SA</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-display font-bold text-white counter" data-target="180">0</div>
+                    <div class="text-sm font-bold text-sa-gold uppercase tracking-wider">Fleet Trucks</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-display font-bold text-white counter" data-target="9">0</div>
+                    <div class="text-sm font-bold text-sa-gold uppercase tracking-wider">Provinces Covered</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-display font-bold text-white counter" data-target="45000">0</div>
+                    <div class="text-sm font-bold text-sa-gold uppercase tracking-wider">KM Weekly</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-sa-black relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-sa-green opacity-10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-5xl font-bold text-white mb-4">OUR <span class="text-sa-gold">SERVICES</span></h2>
+                <div class="w-32 h-2 bg-sa-green mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Comprehensive logistics solutions across the Rainbow Nation.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-gray-900 p-8 rounded-xl border-2 border-gray-800 hover:border-sa-green transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-sa-green opacity-10 rounded-bl-full"></div>
+                    <div class="w-16 h-16 bg-sa-black rounded-full flex items-center justify-center mb-6 border-2 border-sa-gold group-hover:bg-sa-green transition-colors">
+                        <i class="fas fa-box-open text-2xl text-sa-gold group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-3 text-white">Long Haul FTL</h3>
+                    <p class="text-gray-400 mb-6">Full Truckload services from JHB to CPT, DBN to PTA. Direct routes across the N1, N3, and N2 highways.</p>
+                    <a href="#quote" class="text-sa-gold font-bold uppercase text-sm tracking-wide hover:text-white transition-colors">Get Rate <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-gray-900 p-8 rounded-xl border-2 border-gray-800 hover:border-sa-green transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-sa-green opacity-10 rounded-bl-full"></div>
+                    <div class="w-16 h-16 bg-sa-black rounded-full flex items-center justify-center mb-6 border-2 border-sa-gold group-hover:bg-sa-green transition-colors">
+                        <i class="fas fa-snowflake text-2xl text-sa-gold group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-3 text-white">Refrigerated Transport</h3>
+                    <p class="text-gray-400 mb-6">Fresh produce from Limpopo, seafood from the Cape. Temperature-controlled reefers for agricultural exports.</p>
+                    <a href="#quote" class="text-sa-gold font-bold uppercase text-sm tracking-wide hover:text-white transition-colors">Get Rate <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-gray-900 p-8 rounded-xl border-2 border-gray-800 hover:border-sa-green transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-sa-green opacity-10 rounded-bl-full"></div>
+                    <div class="w-16 h-16 bg-sa-black rounded-full flex items-center justify-center mb-6 border-2 border-sa-gold group-hover:bg-sa-green transition-colors">
+                        <i class="fas fa-mountain text-2xl text-sa-gold group-hover:text-white"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-3 text-white">Mining & Heavy Haul</h3>
+                    <p class="text-gray-400 mb-6">Abnormal load specialists for the mining sector. Platinum, coal, and equipment transport in Mpumalanga and Rustenburg.</p>
+                    <a href="#quote" class="text-sa-gold font-bold uppercase text-sm tracking-wide hover:text-white transition-colors">Get Rate <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Major Routes -->
+    <section id="routes" class="py-20 bg-gray-900 sa-pattern">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-4xl font-bold text-center text-white mb-12">MAJOR <span class="text-sa-gold">ROUTES</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-sa-black p-4 rounded border border-sa-green text-center hover:bg-sa-green transition-colors cursor-pointer group">
+                    <i class="fas fa-road text-3xl text-sa-gold mb-2 group-hover:text-white"></i>
+                    <h4 class="font-bold text-white">N1 Highway</h4>
+                    <p class="text-xs text-gray-400">Cape Town ↔ Johannesburg</p>
+                </div>
+                <div class="bg-sa-black p-4 rounded border border-sa-green text-center hover:bg-sa-green transition-colors cursor-pointer group">
+                    <i class="fas fa-road text-3xl text-sa-gold mb-2 group-hover:text-white"></i>
+                    <h4 class="font-bold text-white">N3 Highway</h4>
+                    <p class="text-xs text-gray-400">Johannesburg ↔ Durban</p>
+                </div>
+                <div class="bg-sa-black p-4 rounded border border-sa-green text-center hover:bg-sa-green transition-colors cursor-pointer group">
+                    <i class="fas fa-road text-3xl text-sa-gold mb-2 group-hover:text-white"></i>
+                    <h4 class="font-bold text-white">N2 Highway</h4>
+                    <p class="text-xs text-gray-400">Cape Town ↔ Durban</p>
+                </div>
+                <div class="bg-sa-black p-4 rounded border border-sa-green text-center hover:bg-sa-green transition-colors cursor-pointer group">
+                    <i class="fas fa-road text-3xl text-sa-gold mb-2 group-hover:text-white"></i>
+                    <h4 class="font-bold text-white">N4 Highway</h4>
+                    <p class="text-xs text-gray-400">Pretoria ↔ Maputo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Calculator Section -->
+    <section id="quote" class="py-24 bg-sa-black relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-sa-green opacity-5 transform skew-x-12"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Left Content -->
+                <div class="lg:w-1/2">
+                    <h2 class="font-display text-5xl font-bold text-white mb-6">TRANSPORT <span class="text-sa-gold">CALCULATOR</span></h2>
+                    <p class="text-gray-400 mb-8 text-lg">Get an instant estimate for your load. We service all major cities including Johannesburg, Cape Town, Durban, Port Elizabeth, and Bloemfontein.</p>
+
+                    <div class="bg-sa-green/20 p-6 rounded-lg border border-sa-green mb-8">
+                        <h4 class="text-sa-gold font-bold mb-2"><i class="fas fa-info-circle mr-2"></i>Did You Know?</h4>
+                        <p class="text-sm text-gray-300">The N1 between JHB and CPT is one of the busiest freight corridors in Africa. Our fleet completes this route in 18-20 hours.</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-sa-gold"></i> SATI & CTRACK accredited
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-sa-gold"></i> 24/7 Cargo Tracking
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-sa-gold"></i> GIT Insurance included
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="lg:w-1/2 w-full bg-gray-900 p-8 rounded-2xl shadow-2xl border-2 border-sa-green relative">
+                    <div class="absolute -top-4 -right-4 bg-sa-gold text-sa-black font-bold px-4 py-2 rounded shadow-lg transform rotate-3">
+                        <i class="fas fa-calculator mr-2"></i>INSTANT QUOTE
+                    </div>
+
+                    <form id="quoteForm" onsubmit="calculateQuote(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-bold text-sa-gold mb-2 uppercase">From (City)</label>
+                                <select id="origin" class="w-full bg-sa-black border border-gray-600 rounded p-3 text-white focus:border-sa-gold focus:outline-none transition-colors" required>
+                                    <option value="">Select City</option>
+                                    <option value="jhb">Johannesburg (JHB)</option>
+                                    <option value="cpt">Cape Town (CPT)</option>
+                                    <option value="dbn">Durban (DBN)</option>
+                                    <option value="pta">Pretoria (PTA)</option>
+                                    <option value="pe">Port Elizabeth (PE)</option>
+                                    <option value="bfn">Bloemfontein (BFN)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-sa-gold mb-2 uppercase">To (City)</label>
+                                <select id="destination" class="w-full bg-sa-black border border-gray-600 rounded p-3 text-white focus:border-sa-gold fo
